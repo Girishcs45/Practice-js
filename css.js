@@ -1,0 +1,10 @@
+let msg ="GIRISH";
+console.log(msg.toLowerCase());
+console.log(msg);
+let str="ILoveCode";
+console.log(str.indexOf("Love"));
+let str1="help!";
+let str12=str1.trim().toUpperCase();
+let str3="ApnaCollege";
+let str34=str3.slice(4,str3.length).replace("l","t").replace("l","t");
+let name="Girish Chandrakant Sonawane";

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trigonometry Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #calculateBtn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heading -->
+    <h1>Calculator</h1>
+
+    <!-- Angle input -->
+    <label for="angleInput">Enter angle (degrees):</label>
+    <input type="number" id="angleInput" placeholder="e.g. 45" /><br><br>
+
+    <!-- Function selector -->
+    <label for="operationSelect">Select Function:</label>
+    <select id="operationSelect">
+        <option value="sin">Sine</option>
+        <option value="cos">Cosine</option>
+        <option value="tan">Tangent</option>
+    </select><br><br>
+
+    <!-- Calculate button -->
+    <button id="calculateBtn">Calculate</button>
+
+    <!-- Result display -->
+    <div id="result"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Convert degrees to radians
+        function degreesToRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+
+        // Function to calculate the result
+        function calculateResult(functionName, angleDegrees) {
+            var angleRadians = degreesToRadians(angleDegrees);
+
+            if (functionName === "sin") {
+                return Math.sin(angleRadians);
+            } else if (functionName === "cos") {
+                return Math.cos(angleRadians);
+            } else if (functionName === "tan") {
+                return Math.tan(angleRadians);
+            } else {
+                return "Invalid function";
+            }
+        }
+
+        // Format the result for display
+        function formatResult(value) {
+            if (!isFinite(value)) {
+                return "Undefined";
+            }
+            return value.toFixed(6);
+        }
+
+        // Handle button click
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            var angle = parseFloat(document.getElementById("angleInput").value);
+            var func = document.getElementById("operationSelect").value;
+
+            var rawResult = calculateResult(func, angle);
+            var displayResult = formatResult(rawResult);
+
+            document.getElementById("result").innerText = "Result: " + displayResult;
+        });
+    </script>
+</body>
+</html>
